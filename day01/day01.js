@@ -8,6 +8,6 @@ realData
         .map(Number)
     ).forEach(arr =>  mySumArr.push(arr.reduce((a,b)=>a+b)))
 
-    const sorted =  mySumArr.sort((a,b)=>a-b)
-    console.log(sorted.at(-1));
-    console.log(sorted.at(-1) + sorted.at(-2) + sorted.at(-3));
+const sorted =  mySumArr.sort((a,b)=>a-b)
+console.log(sorted.at(-1));
+console.log(sorted.at(-1) + sorted.at(-2) + sorted.at(-3));
