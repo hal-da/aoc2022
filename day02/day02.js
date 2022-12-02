@@ -42,10 +42,7 @@ const game = (game, gamePlan) => {
     let sum = 0
     game
         .split('\n')
-        .forEach(gameStr => {
-            let g = gameStr.split(' ')
-            sum += gamePlan[g[0]][g[1]]
-        })
+        .forEach(gameStr => sum += gamePlan[gameStr[0]][gameStr[2]])
         console.log(sum);
 }
 
