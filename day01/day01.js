@@ -5,7 +5,10 @@ const mySumArr = realData
     .map(arr => arr.split('\n')
         .map(Number)
         .reduce((a,b)=>a+b)
-    ).sort((a,b)=>a-b)
+    ).sort((a,b)=>b-a)
 
-console.log(mySumArr.at(-1));
-console.log(mySumArr.at(-1) + mySumArr.at(-2) + mySumArr.at(-3));
+const res1 = mySumArr[0]
+const res2 = mySumArr[0] + mySumArr[1] + mySumArr[2]
+
+console.log(res1);
+console.log(res2);

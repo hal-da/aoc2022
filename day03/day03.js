@@ -1,7 +1,5 @@
 import { testData, testResult1,testResult2, realData } from "./day03data.js"
 
-console.log('day03');
-
 const findDoublette = (str)=> {
     for(let i=0; i< str.length/2; i++){
         for(let j = str.length/2; j< str.length; j++){
@@ -9,7 +7,7 @@ const findDoublette = (str)=> {
         }
     }
     return -1
-} 
+}
 
 const findOneInThree = (str)=> {
     if(str.length < 3) return null
@@ -33,12 +31,12 @@ const convertToPriorityInt = (char)=> {
 const firstPuzzle = realData
     .split('\n')
     .map(str => convertToPriorityInt(findDoublette(str)))
-    .reduce((sum,el)=> sum += el)
+    .reduce((sum,el)=> sum + el)
 
 const secondPuzzle  = realData
     .split(/(.+\n.+\n.+)/)
     .map(arr => convertToPriorityInt(findOneInThree(arr)))
-    .reduce((sum,el)=> sum += el)
+    .reduce((sum,el)=> sum + el)
 
 console.log(firstPuzzle);
 console.log(secondPuzzle);

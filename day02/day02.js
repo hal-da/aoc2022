@@ -1,6 +1,5 @@
 import { testData, testResult1,testResult2, realData } from "./day02data.js"
 
-
 const gamePlan1 = {
     A:{
         X:4,
@@ -37,7 +36,6 @@ const gamePlan2 = {
     }
 }
 
-
 const game = (game, gamePlan) => {
     let sum = 0
     game
@@ -46,6 +44,5 @@ const game = (game, gamePlan) => {
         console.log(sum);
 }
 
-console.log('day02');
 game(realData, gamePlan1)
 game(realData, gamePlan2)
