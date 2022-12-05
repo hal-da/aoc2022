@@ -2,6 +2,11 @@ import {testOperations, realOperations, realStack, testStack} from "./day05data.
 
 console.log('day05')
 
+const MOVER_TYPES = {
+	9000:9000,
+	9001:9001,
+}
+
 const stackInput = realStack
 	.split('\n')
 	.map(row => row
@@ -19,16 +24,10 @@ const buildStack = (rawStack) => {
 	return stack
 }
 
-const moveOne = (from, to, stack) => {
-	const crate = stack[from].pop()
-	stack[to].push(crate)
-}
-
-const moveMultiple = (quantity, from, to, stack) =>  {
-	const crate = []
-	for (let i = 0; i < quantity; i++) {
-		crate.unshift(stack[from].pop())
-	}
+const moveMultiple = (quantity, from, to, stack, moverType) =>  {
+	const length = stack[from].length
+	const crate = moverType === MOVER_TYPES["9000"] ? stack[from].slice(-quantity).reverse() : stack[from].slice(-quantity)
+	stack[from].length = length-quantity
 	stack[to] = [...stack[to], ...crate]
 }
 
@@ -42,27 +41,16 @@ const cleanOperations = (operations) => {
 		)
 }
 
-const operateCrateMover9000 = (operations) => {
+const operate = (operations, moverType) => {
 	let stack = buildStack(stackInput)
 	const opArr = cleanOperations(operations)
 
 	opArr.forEach(oneOp => {
-		for (let i = 0; i < oneOp[0]; i++) {
-			moveOne(oneOp[1]-1, oneOp[2]-1, stack)
-		}
+		moveMultiple(oneOp[0],oneOp[1]-1,oneOp[2]-1, stack, moverType)
 	})
 	console.log(stack)
+
 }
 
-const operateCrateMover9001 = (operations) => {
-	let stack = buildStack(stackInput)
-	const opArr = cleanOperations(operations)
-
-	opArr.forEach(oneOp => {
-		moveMultiple(oneOp[0],oneOp[1]-1,oneOp[2]-1, stack)
-	})
-	console.log(stack)
-}
-
-operateCrateMover9000(realOperations)
-operateCrateMover9001(realOperations)
+operate(realOperations, MOVER_TYPES["9000"])
+operate(realOperations, MOVER_TYPES["9001"])
