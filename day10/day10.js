@@ -9,7 +9,7 @@ const operations = {
 	addx:(v)=> {
 		moveCycle()
 		moveCycle()
-		value += (v * 1)
+		value += Number(v)
 	}
 }
 
@@ -19,7 +19,7 @@ const moveCycle = () => {
 
 	cycle++
 	// part2
-	const pixel = (value - pixelRow.length+1 <= 2  && value - pixelRow.length+1 >= 0) ? '#' : '.'
+	const pixel = (value - pixelRow.length+1 <= 2  && value - pixelRow.length+1 >= 0) ? '█' : '.'
 	pixelRow.push(pixel)
 
 	if(cycle % myMod === 1 ) {
